@@ -1,4 +1,4 @@
-
+import "./Home.style.css"
 const Home=()=>{
  return <>
  <article className="article-header">
@@ -6,6 +6,12 @@ const Home=()=>{
         <h1> React Simple CRUD Application</h1>
     </header>
  </article>
+
+ <section className="section-content">
+    <div>
+        this is Content part
+    </div>
+ </section>
 
         </>
 }
