@@ -10,14 +10,18 @@ export const EmployeeList = (props:Props) => {
   return(
   <div>
     <table>
-      <tr>
+      <thead>
+        <tr>
         <th>Name</th>
         <th>Email</th>
         <th>Action</th>
       </tr>
+      </thead>
+      <tbody>
       {list.map((employee)=>{
         return (
-            <tr key={employee.id}>
+           
+       <tr key={employee.id}>
         <td>{`${employee.firstName} ${employee.lastName} `}</td>
         <td>{employee.email}</td>
         <td>
@@ -29,8 +33,9 @@ export const EmployeeList = (props:Props) => {
             </div>
         </td>
       </tr>
+      
         )
-      })}
+      })}</tbody>
 
       
      

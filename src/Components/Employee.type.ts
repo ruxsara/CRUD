@@ -13,3 +13,7 @@
     email:"dummy@gamil.com",
 }
 ]
+
+export enum PageEnum{
+    list,add,
+}
