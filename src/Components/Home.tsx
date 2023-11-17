@@ -1,7 +1,7 @@
 import "./Home.style.css";
 import { useState } from "react";
 import { IEmployee, dummyEmployeeList } from "./Employee.type";
-import EmployeeList from "./EmployeeList";
+import {EmployeeList} from "./EmployeeList";
 const Home = () => {
   const [employeeList, setEmployeeList] = useState(
     dummyEmployeeList as IEmployee[]
@@ -20,6 +20,6 @@ const Home = () => {
         <EmployeeList/>
       </section>
     </>
-  );
+  )
 };
 export default Home;
