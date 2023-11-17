@@ -16,6 +16,7 @@ const Home = () => {
       </article>
 
       <section className="section-content">
+        <input type="button" value="Add Employee" />
         <EmployeeList list={employeeList}/>
       </section>
     </>
