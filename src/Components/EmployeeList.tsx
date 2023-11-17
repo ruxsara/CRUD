@@ -6,10 +6,11 @@ import { EmployeeModal } from "./EmployeeModal";
 type Props = {
   list: IEmployee[];
   onDeleteClickHnd: (data: IEmployee) => void;
+  onEdit: (data: IEmployee) => void;
 };
 
 export const EmployeeList = (props: Props) => {
-  const { list, onDeleteClickHnd } = props;
+  const { list, onDeleteClickHnd,onEdit } = props;
 
   const [showModal,setShowModal]= useState(false)
 
@@ -44,7 +45,7 @@ export const EmployeeList = (props: Props) => {
                 <td>
                   <div>
                     <input type="button" value="View" onClick={()=>viewEmployee(employee)} />
-                    <input type="button" value="Edit" />
+                    <input type="button" value="Edit" onClick={()=> onEdit(employee )} />
                     <input
                       type="button"
                       value="Delete"
