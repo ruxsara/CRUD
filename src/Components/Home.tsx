@@ -10,13 +10,29 @@ const Home = () => {
 
   const [shownPage, setShownPage] = useState(PageEnum.list);
 
-  const onAddEmployeeClick=()=>{
-    setShownPage(PageEnum.add)
+  const onAddEmployeeClick = () => {
+    setShownPage(PageEnum.add);
+  };
+
+  const showListPage = () => {
+    setShownPage(PageEnum.list);
+  };
+
+  const addEmployeeHnd=(data:IEmployee)=>{
+setEmployeeList([...employeeList,data])
   }
 
-  const showListPage=()=>{
-    setShownPage(PageEnum.list)
+  const deleteEmployee=(data:IEmployee)=>{
+    const indexToDelete=employeeList.indexOf(data)
+    const tempList=[...employeeList]
+
+    tempList.splice(indexToDelete,1)
+    setEmployeeList(tempList)
+
   }
+
+
+
   return (
     <>
       <article className="article-header">
@@ -28,12 +44,18 @@ const Home = () => {
       <section className="section-content">
         {shownPage === PageEnum.list && (
           <>
-            <input type="button" value="Add Employee" onClick={onAddEmployeeClick} />
-            <EmployeeList list={employeeList} />
+            <input
+              type="button"
+              value="Add Employee"
+              onClick={onAddEmployeeClick}
+              className="add-employee-btn"
+            />
+            <EmployeeList list={employeeList}  onDeleteClickHnd={deleteEmployee}/>
           </>
         )}
-        {shownPage===PageEnum.add && <AddEmployee onBackBtnClick={showListPage}/>}
-
+        {shownPage === PageEnum.add && (
+          <AddEmployee onBackBtnClick={showListPage} onSubmitClickhnd={addEmployeeHnd} />
+        )}
       </section>
     </>
   );
