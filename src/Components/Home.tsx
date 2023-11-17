@@ -16,8 +16,7 @@ const Home = () => {
       </article>
 
       <section className="section-content">
-        <div>this is Content part</div>
-        <EmployeeList/>
+        <EmployeeList list={employeeList}/>
       </section>
     </>
   )
