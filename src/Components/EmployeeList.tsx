@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { IEmployee } from "./Employee.type";
 import "./EmployeeList.style.css";
 import { EmployeeModal } from "./EmployeeModal";
@@ -9,6 +10,18 @@ type Props = {
 
 export const EmployeeList = (props: Props) => {
   const { list, onDeleteClickHnd } = props;
+
+  const [showModal,setShowModal]= useState(false)
+
+  const viewEmployee=( data:IEmployee)=>{
+    setDataToShow(data)
+    setShowModal(true)
+  }
+
+
+  const onCloseModal=()=> setShowModal(false)
+
+  const [dataToShow,setDataToShow]=useState(null as IEmployee | null)
   return (
     <div>
       <article>
@@ -30,7 +43,7 @@ export const EmployeeList = (props: Props) => {
                 <td>{employee.email}</td>
                 <td>
                   <div>
-                    <input type="button" value="View" />
+                    <input type="button" value="View" onClick={()=>viewEmployee(employee)} />
                     <input type="button" value="Edit" />
                     <input
                       type="button"
@@ -44,7 +57,8 @@ export const EmployeeList = (props: Props) => {
           })}
         </tbody>
       </table>
-      <EmployeeModal />
+      {showModal && dataToShow !== null && (<EmployeeModal onClose={onCloseModal} data={dataToShow} />
+      )}
     </div>
   );
 };
